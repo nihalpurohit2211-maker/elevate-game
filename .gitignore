@@ -1,0 +1,5 @@
+node_modules/
+*.log
+verify_*.js
+test_*.js
+*.png

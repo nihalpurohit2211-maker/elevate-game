@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#4ba3e3">
+  <title>Flappy Plane — City Skyscraper Flight</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="game-container">
+    <!-- Top HUD Navigation Bar -->
+    <header class="hud-bar">
+      <div class="hud-left">
+        <span class="hud-logo">✈ FLAPPY PLANE</span>
+        <button id="pilotBadge" class="pilot-badge" title="Click to Change Pilot Name">
+          👤 <span id="pilotNameDisplay">PILOT</span> <span class="edit-icon">✎</span>
+        </button>
+      </div>
+      <div class="hud-right">
+        <button id="leaderboardBtn" class="hud-btn" title="View Leaderboard">🏆 RANKINGS</button>
+        <button id="soundToggle" class="hud-btn" title="Toggle Sound">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Game Canvas Stage -->
+    <div class="canvas-box">
+      <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <!-- Bottom Controls Guide -->
+    <footer class="footer-bar">
+      <span><strong>Controls:</strong> Press <kbd>SPACE</kbd>, <kbd>W</kbd>, <kbd>↑</kbd> or <strong>Tap Screen</strong> to flap</span>
+    </footer>
+  </div>
+
+  <!-- Leaderboard Modal Overlay -->
+  <div id="leaderboardModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>🏆 HALL OF FAME LEADERBOARD</h2>
+        <button id="closeLeaderboardBtn" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>PILOT</th>
+              <th>SCORE</th>
+              <th>PLANE LENGTH</th>
+              <th>DATE</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+        <div id="emptyLeaderboardMsg" class="empty-msg" style="display:none;">
+          No flights logged yet! Take off to claim the #1 spot!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="clearLeaderboardBtn" class="modal-btn danger">RESET SCORES</button>
+        <button id="closeLeaderboardBtnBottom" class="modal-btn primary">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Name Modal Overlay (Only shown on first flight or when clicking name) -->
+  <div id="nameModal" class="modal-overlay">
+    <div class="modal-card small-card">
+      <div class="modal-header">
+        <h2>✈ ENTER PILOT CALLSIGN</h2>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Saved once so you can jump straight into flying!</p>
+        <div class="input-group">
+          <input type="text" id="playerNameInput" maxlength="12" placeholder="e.g. MAVERICK" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="saveNameBtn" class="modal-btn primary">SAVE & FLY</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
